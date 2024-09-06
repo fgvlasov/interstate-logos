@@ -4,11 +4,11 @@ Refactoring to flex css, we need optimize images to 400px width (70Kb), now 900p
 
 <table>
   <tr>
-    <td>
+    <td> <strong>Before</strong>
 
   ![Before - interstatelogos.com/main/fabrication.aspx](/screens/image6.jpg)
 
-</td><td>
+</td><td> <strong>After</strong>
 
   ![After - interstatelogos.com/main/fabrication.aspx](/screens/image7.jpg)
 
