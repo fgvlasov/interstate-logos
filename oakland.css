@@ -1060,20 +1060,20 @@ select.resp_navigation {
 }
 
 .fabrication-content {
-    height: 200px;
+    display: flex;
+    align-items: flex-start;
     margin-top: 15px;
     margin-bottom: 55px;
 }
 
 .fabrication-img-box {
-    float: left;
-    height: 100%;
-    text-align: center;
-    width: 23%;
+    flex-basis: 25%;
+    padding-right: 20px;
+    overflow: hidden;
 }
 
 .fabrication-img {
-    height: 95%;
+    width:100%;
     border: 3px solid #bbb;
 }
 
@@ -3934,9 +3934,9 @@ a.cmsms_content_next_slide:hover {
     }
 
     .fabrication-text-box {
-        float: left;
+        /* float: left;
         width: 65%;
-        margin-left:50px;
+        margin-left:50px; */
     }
 
     #state-footer {
@@ -4114,15 +4114,6 @@ a.cmsms_content_next_slide:hover {
 
     .agile-innovative-hdr-icon-tall {
         height: 55px;
-    }
-
-    .fabrication-img-box {
-        width: 35%;
-    }
-
-    .fabrication-text-box {
-        width: 50%;
-        margin-left: 40px;
     }
 
     #state-footer {
@@ -4477,8 +4468,8 @@ a.cmsms_content_next_slide:hover {
     }
 
     .fabrication-text-box {
-        float: right;
-        width: 65%;
+        /* float: right;
+        width: 65%; */
     }
 
     #eligibility_header {
@@ -4581,5 +4572,18 @@ a.cmsms_content_next_slide:hover {
 
     #footer, #state-footer {
         height: 280px;
+    }
+	#fabricationPage .one_half {
+		width: 100%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+    .fabrication-img-box {
+        flex-basis: 35%;
+    }
+
+    .fabrication-text-box {
+        flex-basis: 65%;      
     }
 }
