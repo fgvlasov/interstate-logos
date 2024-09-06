@@ -2,12 +2,13 @@
 
 Refactoring to flex css, we need optimize images to 400px width (70Kb), now 900px and 700Kb size.
 
-{{< columns >}}
+<div style="display: flex;">
+<div style="flex: 1; padding-right: 10px;">
 
   ![Before - interstatelogos.com/main/fabrication.aspx](/screens/image6.jpg)
 
-{{< column >}}
+</div><div style="flex: 1;">
 
   ![After - interstatelogos.com/main/fabrication.aspx](/screens/image7.jpg)
 
-{{< endcolumns >}}
+</div></div>
