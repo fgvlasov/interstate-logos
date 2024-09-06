@@ -1,0 +1,194 @@
+﻿var Logos = Logos || {};
+Logos = function () {
+
+    this.navigation = new Logos.Navigation();
+    this.state_navigation = new Logos.StateNavigation();
+};
+Logos.prototype = {
+    showLoadingPanel: function() {
+        $('.loadingDiv').show();
+    },
+    hideLoadingPanel: function() {
+        $('.loadingDiv').hide();
+    },
+    stripHtml: function(html) {
+        return $('<div></div>').append(html).text();
+    },
+    escapeHtml: function (html) {
+        return escape(html);
+    }
+};
+
+var logos = null; // for visual studio
+
+
+Logos.Navigation = {};
+Logos.Navigation = function () {
+
+    this.BreadCrumbTitle = "Home";
+    this.MenuItemId = "";
+
+};
+
+Logos.StateNavigation = {};
+Logos.StateNavigation = function () {
+
+    this.BreadCrumbTitle = "Home";
+    this.MenuItemId = "";
+
+};
+
+Logos.Navigation.prototype = {
+    setMenu: function () {
+        var menuItem = $('#navigation').find('#' + logos.navigation.MenuItemId);
+        if ((menuItem).length > 0) {
+            logos.navigation.highlightMenuItems(menuItem, []);
+        }
+
+        if (window.removeRelatedLinks === true)
+            logos.navigation.removeMenuItem('menu_relatedlinks');
+
+    },
+    highlightMenuItems: function (elem, parents) {
+        elem.addClass('current_page_item');
+        var parent = elem.parent().parent();
+        if (parent.prop('tagName') === 'NAV' || parent.id === "navigation")
+            return parents;
+        else {
+            parents.push(parent.get());
+            return logos.navigation.highlightMenuItems(parent, parents);
+        }
+    },
+    removeMenuItem: function(menuItemId) {
+        $('#navigation').find('#' + menuItemId).remove();
+        $('.resp_navigation').find('.' + menuItemId).remove();
+    }
+}
+
+Logos.StateNavigation.prototype = {
+    setMenu: function () {
+        var menuItem = $('#state_navigation').find('#' + logos.state_navigation.MenuItemId);
+        if ((menuItem).length > 0) {
+            logos.state_navigation.highlightMenuItems(menuItem, []);
+        }
+
+        if (window.removeRelatedLinks === true)
+            logos.state_navigation.removeMenuItem('menu_relatedlinks');
+
+    },
+    highlightMenuItems: function (elem, parents) {
+        elem.addClass('current_page_item');
+        var parent = elem.parent().parent();
+        if (parent.prop('tagName') === 'NAV' || parent.id === "state_navigation")
+            return parents;
+        else {
+            parents.push(parent.get());
+            return logos.state_navigation.highlightMenuItems(parent, parents);
+        }
+    },
+    removeMenuItem: function (menuItemId) {
+        $('#state_navigation').find('#' + menuItemId).remove();
+        $('.resp_navigation').find('.' + menuItemId).remove();
+    }
+}
+
+Logos.Programs = {};
+Logos.Programs = function () {
+
+};
+Logos.Programs.prototype = {
+    getProgramByCompanyName: function (companyName, callback) {
+
+        if (callback) {
+            var cbfn = callback;
+
+            for (var i = 0; i < window.logosPrograms.length; i++) {
+                if (window.logosPrograms[i].CompanyName.indexOf(companyName) > -1) {
+                    cbfn(window.logosPrograms[i]);
+                    break;
+                }
+            }
+        }
+    },
+    getProgramByStateName: function (stateName, callback) {
+
+        if (callback) {
+            var cbfn = callback;
+            for (var i = 0; i < window.logosPrograms.length; i++) {
+                if (window.logosPrograms[i].StateName === stateName) {
+                    callback(window.logosPrograms[i]);
+                    break;
+                }
+            }
+        }
+    },
+    getOfficeByOfficeName: function (officeName, callback) {
+
+        if (callback) {
+            var cbfn = callback;
+            for (var i = 0; i < window.logosOffices.length; i++) {
+                if (window.logosOffices[i].OfficeName === officeName) {
+                    callback(window.logosOffices[i]);
+                    break;
+                }
+            }
+        }
+    },
+    getOfficeByStateName: function (stateName, callback) {
+
+        if (callback) {
+            var cbfn = callback;
+            for (var i = 0; i < window.logosOffices.length; i++) {
+                if (window.logosOffices[i].StateName === stateName) {
+                    callback(window.logosOffices[i]);
+                    break;
+                }
+            }
+        }
+    }
+}
+
+var unitNumberToAppUrl = {};
+unitNumberToAppUrl["178"] = "https://colorado.view.interstatelogos.com";
+unitNumberToAppUrl["478"] = "https://colorado-e-470.view.interstatelogos.com";
+unitNumberToAppUrl["181"] = "https://delaware.view.interstatelogos.com";
+unitNumberToAppUrl["463"] = "https://florida.view.interstatelogos.com";
+unitNumberToAppUrl["194"] = "https://florida-turnpike.view.interstatelogos.com";
+unitNumberToAppUrl["187"] = "https://georgia.view.interstatelogos.com";
+unitNumberToAppUrl["162"] = "https://kansas.view.interstatelogos.com";
+unitNumberToAppUrl["498"] = "https://kansas-turnpike.view.interstatelogos.com";
+unitNumberToAppUrl["165"] = "https://kentucky.view.interstatelogos.com";
+unitNumberToAppUrl["197"] = "https://louisiana.view.interstatelogos.com";
+unitNumberToAppUrl["67"] = "https://michigan.view.interstatelogos.com";
+unitNumberToAppUrl["067"] = "https://michigan.view.interstatelogos.com";
+unitNumberToAppUrl["85"] = "https://minnesota.view.interstatelogos.com";
+unitNumberToAppUrl["085"] = "https://minnesota.view.interstatelogos.com";
+unitNumberToAppUrl["84"] = "https://mississippi.view.interstatelogos.com";
+unitNumberToAppUrl["084"] = "https://mississippi.view.interstatelogos.com";
+unitNumberToAppUrl["465"] = "https://missouri.view.interstatelogos.com";
+unitNumberToAppUrl["467"] = "https://montana.view.interstatelogos.com";
+unitNumberToAppUrl["199"] = "https://nebraska.view.interstatelogos.com";
+unitNumberToAppUrl["166"] = "https://nevada.view.interstatelogos.com";
+unitNumberToAppUrl["497"] = "https://newhampshire.view.interstatelogos.com";
+unitNumberToAppUrl["77"] = "https://newjersey.view.interstatelogos.com";
+unitNumberToAppUrl["077"] = "https://newjersey.view.interstatelogos.com";
+unitNumberToAppUrl["484"] = "https://newmexico.view.interstatelogos.com";
+unitNumberToAppUrl["196"] = "https://ohio.view.interstatelogos.com";
+unitNumberToAppUrl["68"] = "https://oklahoma.view.interstatelogos.com";
+unitNumberToAppUrl["068"] = "https://oklahoma.view.interstatelogos.com";
+unitNumberToAppUrl["168"] = "https://oklahoma-turnpike.view.interstatelogos.com";
+unitNumberToAppUrl["174"] = "https://ontario.view.interstatelogos.com";
+unitNumberToAppUrl["83"] = "https://southcarolina.view.interstatelogos.com";
+unitNumberToAppUrl["083"] = "https://southcarolina.view.interstatelogos.com";
+unitNumberToAppUrl["495"] = "https://tennessee.view.interstatelogos.com";
+unitNumberToAppUrl["466"] = "https://utah.view.interstatelogos.com";
+unitNumberToAppUrl["461"] = "https://virginia-chesapeake.view.interstatelogos.com";
+unitNumberToAppUrl["489"] = "https://virginia-lynchburg.view.interstatelogos.com";
+unitNumberToAppUrl["462"] = "https://virginia-suffolk.view.interstatelogos.com";
+unitNumberToAppUrl["490"] = "https://wisconsin.view.interstatelogos.com";
+
+
+
+$(window).on('load', function () {
+    displayGDPRBanner();
+});

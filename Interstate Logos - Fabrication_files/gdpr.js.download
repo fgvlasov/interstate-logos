@@ -1,0 +1,40 @@
+﻿function displayGDPRBanner() {
+    var banner = document.getElementById('gdprBanner');
+
+    if (checkForGDPRCookie()) {
+        banner.style.display = 'none';
+    }
+    else {
+        banner.style.display = 'flex';
+    }
+}
+
+function checkForGDPRCookie() {
+    if (getCookie('GDPR')) {
+        return true;
+    }
+}
+
+function hideBanner() {
+    createCookie('GDPR', 'hidebanner');
+    displayGDPRBanner();
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function createCookie(name, value) {
+    document.cookie = name + "=" + value + "; path=/; domain=.interstatelogos.com";
+}
+
+function eraseCookie(name) {
+    document.cookie = name + '=; Max-Age=-99999999;';
+}
