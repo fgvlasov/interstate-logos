@@ -410,8 +410,9 @@ h5 {
         background-repeat: no-repeat;
         font: 24px/24px 'Segoe UI', 'Open Sans', sans-serif;
         font-weight: bold;
-        width: 130px;
-        padding: 30px 10px 11px 10px;
+        width: auto !important;
+		white-space: nowrap;
+        padding: 20px 10px 15px 10px;
     }
 
     #state_navigation li > a {
